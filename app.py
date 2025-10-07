@@ -11,6 +11,27 @@ from openai import OpenAI
 # Initialize FastAPI app
 
 app = FastAPI(title="Lead Scoring Backend", description="Scores leads using rule-based + AI logic")
+@app.get("/", response_class=HTMLResponse)
+async def root():
+    return """
+    <html>
+        <head>
+            <title>Lead Scoring Backend</title>
+        </head>
+        <body>
+            <h1>Lead Scoring Backend is Running!</h1>
+            <p>Available API Endpoints:</p>
+            <ul>
+                <li>POST /offer → Upload a product/offer</li>
+                <li>POST /leads/upload → Upload leads CSV</li>
+                <li>POST /score → Score uploaded leads</li>
+                <li>GET /results → View scored leads</li>
+                <li>GET /results/export → Download scored leads CSV</li>
+            </ul>
+            <p>Use Postman or cURL to interact with POST endpoints.</p>
+        </body>
+    </html>
+    """
 
 
 # Pydantic model
@@ -184,3 +205,4 @@ async def export_results():
     file_path = "scored_leads.csv"
     df.to_csv(file_path, index=False)
     return FileResponse(path=file_path, filename="scored_leads.csv", media_type="text/csv")
+
