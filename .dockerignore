@@ -1,0 +1,34 @@
+# Ignore Python cache and virtual environments
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+*.log
+.env
+venv/
+env/
+.venv/
+
+# Ignore local data files
+*.csv
+*.xlsx
+*.json
+
+# Ignore Git and IDE files
+.git
+.gitignore
+README.md
+.DS_Store
+.idea/
+.vscode/
+
+# Ignore test and build artifacts
+dist/
+build/
+*.egg-info/
+
+# Ignore Render or Docker build artifacts
+Dockerfile*
+docker-compose*
